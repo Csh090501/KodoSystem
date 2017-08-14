@@ -35,3 +35,13 @@
 ## 环境搭建： 
 
 Eclipse + Tomcat + MySQL
+
+## 项目截图：
+
+### 登录界面:
+
+![Alt text](https://github.com/Csh090501/KodoSystem/raw/master/img-floder/login.png)
+
+### 主界面:
+
+![Alt text](https://github.com/Csh090501/KodoSystem/raw/master/img-floder/main.png)
