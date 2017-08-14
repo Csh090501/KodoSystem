@@ -10,6 +10,10 @@
 
 ![Alt text](https://github.com/Csh090501/KodoSystem/raw/master/img-floder/img2.png)
 
+## 系统结构图：
+
+![Alt text](https://github.com/Csh090501/KodoSystem/raw/master/img-floder/img1.png)
+
 
 ## 功能模块介绍：
 - 管理员登录模块：系统通过一个登录界面，进行身份验证之后进入管理系统。
