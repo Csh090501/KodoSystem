@@ -8,7 +8,7 @@
 	 单，而原材料的购入需要从供应商那里进货。
 	
 	系统流程图：
-	   ![Image](https://github.com/Csh090501/KodoSystem/raw/master/images-folder/img1.png）
+	   ![Image](https://raw.githubusercontent.com/Csh090501/KodoSystem/master/img-floder/img1.png）
   
     功能模块介绍：
 	   1.管理员登录模块：系统通过一个登录界面，进行身份验证之后进入管理系统。
