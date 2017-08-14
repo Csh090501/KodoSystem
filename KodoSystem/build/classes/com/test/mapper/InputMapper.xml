@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.mapper.InputMapper">
+
+	<select id="getInput" resultType="com.test.po.Input">
+		select * from input
+	</select>
+
+	<delete id="deleteInput" parameterType="java.lang.String">
+		DELETE FROM input where inp_id in
+		<foreach item="delIds" collection="array" open="(" separator="," close=")">
+		#{delIds}
+		</foreach>
+	</delete> 
+	<update id="modifyInput" parameterType="com.test.po.Input" >
+		update input set 	inp_id        = #{inp_id},
+    						inp_mat_name  = #{inp_mat_name},
+    						inp_price     = #{inp_price},
+    						inp_number    = #{inp_number},
+    						inp_tot_price = #{inp_tot_price}
+  							where inp_no  = #{inp_no}
+	</update>
+	
+	<select id="searchInput" resultType="com.test.po.Input" >
+		select * from input where inp_id like '%${inp_id}%' and 
+		inp_mat_name like '%${inp_mat_name}%' 
+		<if test="inp_stime!='' and inp_stime!=null">
+		   and TO_DAYS(inp_date)&gt;=TO_DAYS(#{inp_stime})
+		</if>
+		<if test="inp_etime!='' and inp_etime!=null">
+		   and TO_DAYS(inp_date)&lt;=TO_DAYS(#{inp_etime})
+		</if>
+	</select> 
+	
+</mapper>

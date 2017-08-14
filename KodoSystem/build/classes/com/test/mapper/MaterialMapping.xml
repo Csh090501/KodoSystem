@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.mapper.MaterialMapper">
+<!--     获取所有材料信息 -->
+	<select id="getMaterial" resultType="com.test.po.Material">
+		select * from material 
+	</select>
+<!-- 批量删除材料信息 -->
+	<delete id="deleteMaterial" parameterType="java.lang.String">
+		DELETE FROM material where mat_id in
+		<foreach item="delIds" collection="array" open="(" separator="," close=")">
+		#{delIds}
+		</foreach>
+	</delete> 
+<!-- 	更新材料信息 -->
+	<update id="modifyMaterial" parameterType="com.test.po.Material" >
+		update material set mat_id = #{mat_id},
+    						mat_name = #{mat_name},
+    						mat_number = #{mat_number}
+  							where mat_no = #{mat_no}
+	</update>
+<!-- 	新增一种新型材料 -->
+	<insert id="addMaterial" parameterType="com.test.po.Material">
+		insert into material (mat_no,mat_id,mat_name,mat_number)
+  		values (#{mat_no},#{mat_id},#{mat_name},#{mat_number})
+	</insert>
+<!-- 	根据条件进行模糊查询 -->
+	<select id="searchMaterial" resultType="com.test.po.Material" >
+		select * from material where mat_id like '%${mat_id}%' and mat_name like  '%${mat_name}%'
+	</select>
+</mapper>

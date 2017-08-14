@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mapper.ClientMapper">
+       <!-- 批量删除客户 -->
+	<delete id="deleteClients">
+	    delete from client where no in
+	    <foreach item="delNos" collection="array" open="(" separator="," close=")">
+            #{delNos}
+        </foreach>
+	</delete>
+</mapper> 
+
+<!-- &(逻辑与)  &amp;         -->
+<!-- <(小于)    &lt;         -->
+<!-- >(大于)    &gt;         -->
+<!-- "(双引号)  &quot;       -->
+<!-- '(单引号)  &apos; -->

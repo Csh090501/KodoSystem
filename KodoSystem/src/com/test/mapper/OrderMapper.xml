@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mapper.OrderMapper">
+	<delete id="deleteOrders">
+		 delete from order_1 where ord_no in
+	    <foreach item="delNos" collection="array" open="(" separator="," close=")">
+            #{delNos}
+        </foreach>
+	</delete>
+    
+    <select id="getOrders" resultType="com.test.po.Order" >
+		select * from order_1 where 
+		<choose>
+		    <when test="ord_id!='' and ord_id!=null">
+		          ord_id = #{ord_id}
+		    </when>
+		    <otherwise>
+		          ord_id like '%${ord_id}%'
+		    </otherwise>
+		</choose>
+		<if test="ord_stime!='' and ord_stime!=null">
+		   and TO_DAYS(ord_date)&gt;=TO_DAYS(#{ord_stime})
+		</if>
+		<if test="ord_etime!='' and ord_etime!=null">
+		   and TO_DAYS(ord_date)&lt;=TO_DAYS(#{ord_etime})
+		</if>
+		   ORDER BY ord_date DESC limit #{start},#{end}
+	</select> 
+	
+	<select id="orderFind" resultType="java.lang.Double">
+		select pro_price from product where pro_name = #{pro_name}
+	</select>
+ 
+</mapper>
