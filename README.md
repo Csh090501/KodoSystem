@@ -26,10 +26,3 @@
 	   2.建立包文件：controller，mapper，po，service，util，建包不是很细，按照正常的建包应该更加细分。
 	   
 	 环境搭建： Eclipse + Tomcat + MySQL
-	   
-	   
-     
-  
-  
-
-  
